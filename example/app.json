@@ -1,0 +1,22 @@
+{
+  "name": "react-native-parallax-scrolling-example",
+  "displayName": "ParallaxScrolling Example",
+  "expo": {
+    "name": "react-native-parallax-scrolling-example",
+    "slug": "react-native-parallax-scrolling-example",
+    "description": "Example app for react-native-parallax-scrolling",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
