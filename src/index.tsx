@@ -1,2 +1,4 @@
-export * from './types';
-export { ParallaxScrollView } from './ParallaxScrollView';
+export {
+  ParallaxScrollView,
+  ParallaxScrollViewProps,
+} from './ParallaxScrollView';
