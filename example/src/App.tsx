@@ -11,9 +11,7 @@ export default function App() {
       <View style={styles.foregroundContainer}>
         <Image
           style={styles.avatarImage}
-          source={{
-            uri: 'https://s.gravatar.com/avatar/41c9dedd1b4c53ace82e040bb09334fe',
-          }}
+          source={require('../assets/avatar.png')}
         />
         <View style={styles.foregroundTextContainer}>
           <Text style={styles.foregroundText}>tamago3keran</Text>
