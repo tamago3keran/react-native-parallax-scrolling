@@ -1,15 +1,22 @@
 import React from 'react';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { ParallaxScrollView } from 'react-native-parallax-scrolling';
 
 const { width } = Dimensions.get('window');
+const PARALLAX_IMAGE_HEIGHT = width * 0.618;
 
 export default function App() {
   const renderForegroundContent = () => {
     return (
       <View style={styles.foregroundContainer}>
+        <Image
+          style={styles.avatarImage}
+          source={{
+            uri: 'https://s.gravatar.com/avatar/41c9dedd1b4c53ace82e040bb09334fe',
+          }}
+        />
         <View style={styles.foregroundTextContainer}>
-          <Text style={styles.foregroundText}>Foreground Text</Text>
+          <Text style={styles.foregroundText}>tamago3keran</Text>
         </View>
       </View>
     );
@@ -37,13 +44,18 @@ const styles = StyleSheet.create({
   },
   foregroundContainer: {
     width: width,
-    height: 60,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-  },
-  foregroundTextContainer: {
+    height: PARALLAX_IMAGE_HEIGHT,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  avatarImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+  },
+  foregroundTextContainer: {
+    paddingTop: 8,
   },
   foregroundText: {
     fontSize: 20,

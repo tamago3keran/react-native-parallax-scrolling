@@ -49,14 +49,12 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
+    overflow: 'hidden',
   },
   backgroundContainer: {
     zIndex: 0,
   },
   foregroundContainer: {
     zIndex: 1,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
