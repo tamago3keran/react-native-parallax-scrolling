@@ -24,7 +24,7 @@ export default function App() {
 
   return (
     <ParallaxScrollView
-      backgroundImage={{
+      imageSource={{
         uri: 'https://i.pinimg.com/originals/3c/24/48/3c2448e7829710ba7dc0f3743f101219.png',
       }}
       foregroundContent={renderForegroundContent()}

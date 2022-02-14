@@ -9,9 +9,9 @@ const AnimatedForeground = createAnimatedComponent(View);
 export const ImageContainer = ({
   animatedBackgroundScale,
   animatedBackgroundTranslateY,
-  backgroundImage,
   foregroundContent,
   imageHeight,
+  imageSource,
   imageWidth,
 }: ImageContainerProps): ReactElement => {
   return (
@@ -28,7 +28,7 @@ export const ImageContainer = ({
             ],
           },
         ]}
-        source={backgroundImage}
+        source={imageSource}
       />
       <AnimatedForeground
         style={[

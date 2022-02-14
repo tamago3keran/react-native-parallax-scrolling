@@ -15,10 +15,10 @@ const { createAnimatedComponent } = Animated;
 const AnimatedScrollView = createAnimatedComponent(ScrollView);
 
 export const ParallaxScrollView = ({
-  backgroundImage,
   children,
   foregroundContent,
-  parallaxImageHeight = PARALLAX_IMAGE_HEIGHT,
+  imageHeight = PARALLAX_IMAGE_HEIGHT,
+  imageSource,
 }: ParallaxScrollViewProps): ReactElement => {
   const scrollY = useRef(new Animated.Value(0)).current;
   const animatedEvent = Animated.event(
@@ -27,7 +27,7 @@ export const ParallaxScrollView = ({
   );
   const animatedBackgroundScale = scrollY.interpolate({
     inputRange: [-height, 0],
-    outputRange: [(2 * height + parallaxImageHeight) / parallaxImageHeight, 1],
+    outputRange: [(2 * height + imageHeight) / imageHeight, 1],
     extrapolate: 'clamp',
   });
   const animatedBackgroundTranslateY = scrollY.interpolate({
@@ -46,9 +46,9 @@ export const ParallaxScrollView = ({
         <ImageContainer
           animatedBackgroundScale={animatedBackgroundScale}
           animatedBackgroundTranslateY={animatedBackgroundTranslateY}
-          backgroundImage={backgroundImage}
           foregroundContent={foregroundContent}
-          imageHeight={parallaxImageHeight}
+          imageHeight={imageHeight}
+          imageSource={imageSource}
           imageWidth={width}
         />
         {children}
