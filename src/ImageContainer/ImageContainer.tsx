@@ -11,6 +11,8 @@ export const ImageContainer = ({
   animatedBackgroundTranslateY,
   foregroundContent,
   imageHeight,
+  imageOverlayColor,
+  imageOverlayOpacity,
   imageSource,
   imageWidth,
 }: ImageContainerProps): ReactElement => {
@@ -29,7 +31,17 @@ export const ImageContainer = ({
           },
         ]}
         source={imageSource}
-      />
+      >
+        <View
+          style={[
+            styles.backgroundOverlay,
+            {
+              backgroundColor: imageOverlayColor,
+              opacity: imageOverlayOpacity,
+            },
+          ]}
+        />
+      </AnimatedBackground>
       <AnimatedForeground
         style={[
           styles.innerContainer,
@@ -53,6 +65,9 @@ const styles = StyleSheet.create({
   },
   backgroundContainer: {
     zIndex: 0,
+  },
+  backgroundOverlay: {
+    flex: 1,
   },
   foregroundContainer: {
     zIndex: 1,

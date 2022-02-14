@@ -6,6 +6,8 @@ export interface ImageContainerProps {
   animatedBackgroundTranslateY: Animated.AnimatedInterpolation;
   foregroundContent?: ReactElement;
   imageHeight: number;
+  imageOverlayColor?: string;
+  imageOverlayOpacity?: number;
   imageSource: ImageSourcePropType;
   imageWidth: number;
 }

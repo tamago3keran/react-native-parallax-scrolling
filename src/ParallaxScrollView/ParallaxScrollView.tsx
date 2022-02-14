@@ -18,6 +18,8 @@ export const ParallaxScrollView = ({
   children,
   foregroundContent,
   imageHeight = PARALLAX_IMAGE_HEIGHT,
+  imageOverlayColor,
+  imageOverlayOpacity,
   imageSource,
 }: ParallaxScrollViewProps): ReactElement => {
   const scrollY = useRef(new Animated.Value(0)).current;
@@ -48,6 +50,8 @@ export const ParallaxScrollView = ({
           animatedBackgroundTranslateY={animatedBackgroundTranslateY}
           foregroundContent={foregroundContent}
           imageHeight={imageHeight}
+          imageOverlayColor={imageOverlayColor}
+          imageOverlayOpacity={imageOverlayOpacity}
           imageSource={imageSource}
           imageWidth={width}
         />

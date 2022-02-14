@@ -5,5 +5,7 @@ export interface ParallaxScrollViewProps {
   children: ReactElement;
   foregroundContent?: ReactElement;
   imageHeight?: number;
+  imageOverlayColor?: string;
+  imageOverlayOpacity?: number;
   imageSource: ImageSourcePropType;
 }
