@@ -10,7 +10,7 @@ import { ImageContainer } from '../../src/ImageContainer';
 import type { ParallaxScrollViewProps } from './types';
 
 const { width, height } = Dimensions.get('window');
-const BACKGROUND_IMAGE_HEIGHT = width * 0.618;
+const PARALLAX_IMAGE_HEIGHT = width * 0.618;
 const { createAnimatedComponent } = Animated;
 const AnimatedScrollView = createAnimatedComponent(ScrollView);
 
@@ -18,7 +18,7 @@ export const ParallaxScrollView = ({
   backgroundImage,
   children,
   foregroundContent,
-  parallaxImageHeight = BACKGROUND_IMAGE_HEIGHT,
+  parallaxImageHeight = PARALLAX_IMAGE_HEIGHT,
 }: ParallaxScrollViewProps): ReactElement => {
   const scrollY = useRef(new Animated.Value(0)).current;
   const animatedEvent = Animated.event(
