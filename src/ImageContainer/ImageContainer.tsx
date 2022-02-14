@@ -9,6 +9,7 @@ const AnimatedForeground = createAnimatedComponent(View);
 export const ImageContainer = ({
   animatedBackgroundScale,
   animatedBackgroundTranslateY,
+  animatedForegroundOpacity,
   foregroundContent,
   imageHeight,
   imageOverlayColor,
@@ -46,7 +47,7 @@ export const ImageContainer = ({
         style={[
           styles.innerContainer,
           styles.foregroundContainer,
-          { height: imageHeight },
+          { height: imageHeight, opacity: animatedForegroundOpacity },
         ]}
       >
         {foregroundContent}

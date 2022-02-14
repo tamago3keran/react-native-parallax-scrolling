@@ -23,6 +23,7 @@ export default function App() {
   return (
     <ParallaxScrollView
       foregroundContent={renderForegroundContent()}
+      foregroundFadeOutSpeed={3}
       imageOverlayColor="black"
       imageOverlayOpacity={0.3}
       imageSource={{

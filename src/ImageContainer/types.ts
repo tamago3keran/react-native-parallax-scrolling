@@ -4,6 +4,7 @@ import type { Animated, ImageSourcePropType } from 'react-native';
 export interface ImageContainerProps {
   animatedBackgroundScale: Animated.AnimatedInterpolation;
   animatedBackgroundTranslateY: Animated.AnimatedInterpolation;
+  animatedForegroundOpacity: Animated.AnimatedInterpolation | number;
   foregroundContent?: ReactElement;
   imageHeight: number;
   imageOverlayColor?: string;

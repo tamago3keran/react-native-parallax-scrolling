@@ -17,6 +17,7 @@ const AnimatedScrollView = createAnimatedComponent(ScrollView);
 export const ParallaxScrollView = ({
   children,
   foregroundContent,
+  foregroundFadeOutSpeed,
   imageHeight = PARALLAX_IMAGE_HEIGHT,
   imageOverlayColor,
   imageOverlayOpacity,
@@ -37,6 +38,13 @@ export const ParallaxScrollView = ({
     outputRange: [-height, 0],
     extrapolate: 'clamp',
   });
+  const animatedForegroundOpacity = foregroundFadeOutSpeed
+    ? scrollY.interpolate({
+        inputRange: [0, imageHeight / foregroundFadeOutSpeed],
+        outputRange: [1, 0],
+        extrapolate: 'clamp',
+      })
+    : 1;
 
   return (
     <View style={styles.container}>
@@ -48,6 +56,7 @@ export const ParallaxScrollView = ({
         <ImageContainer
           animatedBackgroundScale={animatedBackgroundScale}
           animatedBackgroundTranslateY={animatedBackgroundTranslateY}
+          animatedForegroundOpacity={animatedForegroundOpacity}
           foregroundContent={foregroundContent}
           imageHeight={imageHeight}
           imageOverlayColor={imageOverlayColor}
