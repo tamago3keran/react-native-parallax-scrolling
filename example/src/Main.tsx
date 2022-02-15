@@ -1,14 +1,17 @@
 import React from 'react';
 import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { ParallaxScrollView } from 'react-native-parallax-scrolling';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get('window');
 const PARALLAX_IMAGE_HEIGHT = width * 0.618;
 
-export default function App() {
+export default function Main() {
+  const insets = useSafeAreaInsets();
+
   const renderForegroundContent = () => {
     return (
-      <View style={styles.foregroundContainer}>
+      <View style={[styles.foregroundContainer, { paddingTop: insets.top }]}>
         <Image
           style={styles.avatarImage}
           source={require('../assets/avatar.png')}
