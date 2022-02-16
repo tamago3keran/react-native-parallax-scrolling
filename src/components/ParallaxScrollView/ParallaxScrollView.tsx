@@ -8,6 +8,11 @@ import {
 } from 'react-native';
 import { ImageContainer } from '../ImageContainer';
 import type { ParallaxScrollViewProps } from './types';
+import {
+  animatedBackgroundScale,
+  animatedBackgroundTranslateY,
+  animatedForegroundOpacity,
+} from '../../utils';
 
 const { width, height } = Dimensions.get('window');
 const PARALLAX_IMAGE_HEIGHT = width * 0.618;
@@ -28,23 +33,6 @@ export const ParallaxScrollView = ({
     [{ nativeEvent: { contentOffset: { y: scrollY } } }],
     { useNativeDriver: true }
   );
-  const animatedBackgroundScale = scrollY.interpolate({
-    inputRange: [-height, 0],
-    outputRange: [(2 * height + imageHeight) / imageHeight, 1],
-    extrapolate: 'clamp',
-  });
-  const animatedBackgroundTranslateY = scrollY.interpolate({
-    inputRange: [-height, 0],
-    outputRange: [-height, 0],
-    extrapolate: 'clamp',
-  });
-  const animatedForegroundOpacity = foregroundFadeOutSpeed
-    ? scrollY.interpolate({
-        inputRange: [0, imageHeight / foregroundFadeOutSpeed],
-        outputRange: [1, 0],
-        extrapolate: 'clamp',
-      })
-    : 1;
 
   return (
     <View style={styles.container}>
@@ -54,9 +42,20 @@ export const ParallaxScrollView = ({
         scrollEventThrottle={16}
       >
         <ImageContainer
-          animatedBackgroundScale={animatedBackgroundScale}
-          animatedBackgroundTranslateY={animatedBackgroundTranslateY}
-          animatedForegroundOpacity={animatedForegroundOpacity}
+          animatedBackgroundScale={animatedBackgroundScale(
+            scrollY,
+            height,
+            imageHeight
+          )}
+          animatedBackgroundTranslateY={animatedBackgroundTranslateY(
+            scrollY,
+            height
+          )}
+          animatedForegroundOpacity={animatedForegroundOpacity(
+            scrollY,
+            foregroundFadeOutSpeed,
+            imageHeight
+          )}
           foregroundContent={foregroundContent}
           imageHeight={imageHeight}
           imageOverlayColor={imageOverlayColor}
