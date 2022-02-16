@@ -6,7 +6,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { ImageContainer } from '../../src/ImageContainer';
+import { ImageContainer } from '../ImageContainer';
 import type { ParallaxScrollViewProps } from './types';
 
 const { width, height } = Dimensions.get('window');

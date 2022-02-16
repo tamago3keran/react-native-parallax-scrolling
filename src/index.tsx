@@ -1,4 +1,2 @@
-export {
-  ParallaxScrollView,
-  ParallaxScrollViewProps,
-} from './ParallaxScrollView';
+export { ParallaxScrollView } from './components';
+export type { ParallaxScrollViewProps } from './components';
