@@ -7,11 +7,13 @@ import {
   View,
 } from 'react-native';
 import { ImageContainer } from '../ImageContainer';
+import { FixedHeaderContainer } from '../FixedHeaderContainer';
 import type { ParallaxScrollViewProps } from './types';
 import {
   animatedBackgroundScale,
   animatedBackgroundTranslateY,
   animatedForegroundOpacity,
+  animatedFixedHeaderOpacity,
 } from '../../utils';
 
 const { width, height } = Dimensions.get('window');
@@ -21,8 +23,11 @@ const AnimatedScrollView = createAnimatedComponent(ScrollView);
 
 export const ParallaxScrollView = ({
   children,
+  fixedHeader,
+  fixedHeaderFadeSpeed,
   foregroundContent,
   foregroundFadeOutSpeed,
+  headerHeight,
   imageHeight = PARALLAX_IMAGE_HEIGHT,
   imageOverlayColor,
   imageOverlayOpacity,
@@ -34,8 +39,26 @@ export const ParallaxScrollView = ({
     { useNativeDriver: true }
   );
 
+  const renderFixedHeader = () => {
+    if (!fixedHeader || !headerHeight) return null;
+    return (
+      <FixedHeaderContainer
+        animatedFixedHeaderOpacity={animatedFixedHeaderOpacity(
+          scrollY,
+          fixedHeaderFadeSpeed,
+          headerHeight,
+          imageHeight
+        )}
+        headerHeight={headerHeight}
+      >
+        {fixedHeader}
+      </FixedHeaderContainer>
+    );
+  };
+
   return (
     <View style={styles.container}>
+      {renderFixedHeader()}
       <AnimatedScrollView
         onScroll={animatedEvent}
         style={styles.scrollViewContainer}

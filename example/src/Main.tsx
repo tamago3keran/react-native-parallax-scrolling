@@ -4,10 +4,21 @@ import { ParallaxScrollView } from 'react-native-parallax-scrolling';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get('window');
+const HEADER_HEIGHT = 90;
 const PARALLAX_IMAGE_HEIGHT = width * 0.618;
 
 export default function Main() {
   const insets = useSafeAreaInsets();
+
+  const renderFixedHeader = () => {
+    return (
+      <View style={[styles.fixedHeader, { paddingTop: insets.top }]}>
+        <Text style={styles.fixedHeaderText} onPress={() => {}}>
+          Scroll to top
+        </Text>
+      </View>
+    );
+  };
 
   const renderForegroundContent = () => {
     return (
@@ -25,8 +36,11 @@ export default function Main() {
 
   return (
     <ParallaxScrollView
+      fixedHeader={renderFixedHeader()}
       foregroundContent={renderForegroundContent()}
       foregroundFadeOutSpeed={3}
+      headerHeight={HEADER_HEIGHT}
+      imageHeight={PARALLAX_IMAGE_HEIGHT}
       imageOverlayColor="black"
       imageOverlayOpacity={0.3}
       imageSource={require('../assets/background.png')}
@@ -43,6 +57,22 @@ const styles = StyleSheet.create({
     height: 2000,
     borderTopWidth: 1,
     borderColor: 'black',
+  },
+  fixedHeader: {
+    width: width,
+    height: HEADER_HEIGHT,
+    paddingRight: 8,
+    backgroundColor: 'transparent',
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+  },
+  fixedHeaderText: {
+    color: 'lightgray',
+    fontSize: 16,
   },
   foregroundContainer: {
     width: width,

@@ -35,3 +35,17 @@ export const animatedForegroundOpacity = (
     extrapolate: 'clamp',
   });
 };
+
+export const animatedFixedHeaderOpacity = (
+  scrollY: Animated.Value,
+  fadeSpeed?: number,
+  headerHeight?: number,
+  imageHeight?: number
+) => {
+  if (!fadeSpeed || !imageHeight || !headerHeight) return 1;
+  return scrollY.interpolate({
+    inputRange: [0, imageHeight - headerHeight / fadeSpeed],
+    outputRange: [0, 1],
+    extrapolate: 'clamp',
+  });
+};
